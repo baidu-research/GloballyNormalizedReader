@@ -68,7 +68,7 @@ Before training the Globally Normalized Reader, you need to download and featuri
 
 2. Featurize all of the data:
     ```bash
-    python featurize.py --datadir data --outdir featurized`
+    python featurize.py --datadir data --outdir featurized
     ```
 
 ### Training
