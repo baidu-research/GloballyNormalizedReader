@@ -1,0 +1,10 @@
+data/
+env/
+runs
+__pycache__/
+train.json
+dev.json
+featurized
+
+# Script to download data
+!data/download.sh
