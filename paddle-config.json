@@ -1,0 +1,16 @@
+{
+	"question_layers": 2,
+	"document_layers": 2,
+	"layer_size": 256,
+	"embedding_dropout": 0.8,
+	"hidden_dropout": 0.8,
+	"learning_rate": 0.001,
+	"anneal_every": 1000,
+	"anneal_rate": 0.9886,
+	"epochs": 10,
+	"param_save_filename_format": "params-%d.tgz",
+	"vocab_size": 104807,
+	"data_dir": "featurized",
+	"batch_size": 16
+}
+

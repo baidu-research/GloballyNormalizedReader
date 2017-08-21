@@ -15,7 +15,7 @@ If you use the dataset/code in your research, please cite the above paper.
 
 Note: This repository is a reimplementation of the original used for the above paper. The original used a batch size of 32 and synchronous-SGD across multiple GPUs. However, this code currently only runs on a single GPU and will split a batch that runs out of memory into several smaller batches. For this reason, the code does not exactly reproduce the results in that paper (but it should be <2% off). Work is underway to rectify this issue.
 
-## Installation
+## Usage (TensorFlow)
 
 ### Prerequisites
 You must have installed and available the following libraries:
@@ -89,3 +89,10 @@ Before training the Globally Normalized Reader, you need to download and featuri
     ```bash
     python main.py predict --name default --data data/dev.json --vocab-path featurized/ --output predictions.txt
     ```
+
+## Usage (PaddlePaddle)
+
+1. Install the latest GPU-compatible PaddlePaddle Docker image, as directed on [the PaddlePaddle website](http://www.paddlepaddle.org/).
+2. To print the model configuration as text, use `paddle_model.py`.
+3. To train the model, use `paddle_train.py`.
+4. To run inference the model, use `paddle_infer.py`.
