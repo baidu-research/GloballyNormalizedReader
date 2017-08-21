@@ -74,13 +74,13 @@ class Vocab(object):
         embeddings = np.load(embedding_path)
         return embeddings
 
-    def construct_embedding_matrix(self):
+    def construct_embedding_matrix(self, glove_path):
         # Randomly initialize word embeddings
         embeddings = np.random.randn(self.size, EMBEDDING_DIM).astype(np.float32)
 
         load_word_vectors(param=embeddings,
                           vocab=self._id_to_word,
-                          path="/mnt/data/jonathanraiman/glove.txt",
+                          path=glove_path,
                           missing_word_alternative=missing_word_heuristic,
                           missing_word_value=lambda: 0.0)
         embedding_path = os.path.join(self._path, "embeddings.npy")

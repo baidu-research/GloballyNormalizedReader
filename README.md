@@ -64,11 +64,13 @@ Before training the Globally Normalized Reader, you need to download and featuri
 1. Download all the necessary data:
     ```bash
     cd data && ./download.sh && cd ..
+    GLOVE_PATH=data/glove.txt
+    wget http://nlp.stanford.edu/data/glove.840B.300d.zip -O $GLOVE_PATH
     ```
 
 2. Featurize all of the data:
     ```bash
-    python featurize.py --datadir data --outdir featurized
+    python featurize.py --datadir data --outdir featurized  --glove-path $GLOVE_PATH
     ```
 
 ### Training
