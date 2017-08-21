@@ -393,7 +393,7 @@ def train_model(model_type, name, module, data, batch_size, validation_size,
 
 @contextmanager
 def session_with_model(model_type, name):
-    """Create a context manager that will start a TensorSwift session and load
+    """Create a context manager that will start a TensorFlow session and load
     a model into it, and return the session and the model.
 
     Example:

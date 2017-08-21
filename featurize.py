@@ -9,7 +9,7 @@ import string
 
 import click
 import numpy as np
-import xml_cleaner
+import ciseau
 
 from constants import SOS, EOS, UNK, PAD
 from vocab import Vocab
@@ -59,9 +59,9 @@ def build_vocabulary(datadir, outdir, glove_path):
         datapath = os.path.join(datadir, split + ".json")
 
         for question, context, _, _ in data_stream(datapath):
-            for word in xml_cleaner.tokenize(question, normalize_ascii=False):
+            for word in ciseau.tokenize(question, normalize_ascii=False):
                 counter[normalize(word)] += 1
-            for word in xml_cleaner.tokenize(context, normalize_ascii=False):
+            for word in ciseau.tokenize(context, normalize_ascii=False):
                 counter[normalize(word)] += 1
 
     common_words = [UNK, SOS, EOS, PAD] + [w for w, _ in counter.most_common()]
@@ -98,7 +98,7 @@ def tokenize_example(question, context, answers, strip_labels=True):
     answer_start = answers[0]["answer_start"]
 
     if strip_labels:
-        answer_tokens = xml_cleaner.tokenize(answer, normalize_ascii=False)
+        answer_tokens = ciseau.tokenize(answer, normalize_ascii=False)
         start_offset, end_offset = normalize_answer_tokens(answer_tokens)
         answer = "".join(answer_tokens[start_offset:end_offset])
         # add back the piece that was stripped off:
@@ -108,8 +108,8 @@ def tokenize_example(question, context, answers, strip_labels=True):
     placeholder = "XXXX"
     new_context = context[:answer_start] + placeholder + context[answer_start + len(answer):]
 
-    token_context = xml_cleaner.sent_tokenize(new_context, keep_whitespace=True)
-    token_question = xml_cleaner.tokenize(question)
+    token_context = ciseau.sent_tokenize(new_context, keep_whitespace=True)
+    token_question = ciseau.tokenize(question)
 
     sentence_label = None
     for sent_idx, sent in enumerate(token_context):
@@ -127,7 +127,7 @@ def tokenize_example(question, context, answers, strip_labels=True):
         # deal with cases where the answer is in the middle
         # of the word
         answer = word.replace(placeholder, answer)
-        token_answer = xml_cleaner.tokenize(answer)
+        token_answer = ciseau.tokenize(answer)
 
         answer_end = answer_start + len(token_answer) - 1
         answer_sent = sent[:answer_start] + token_answer + sent[answer_start + 1:]
@@ -230,10 +230,10 @@ def convert_example_to_indices(example, outfile, vocab):
 def featurize_example(question, context, vocab):
     # Convert to indices
     question_idxs = [vocab.word_to_idx(normalize(w))
-                     for w in xml_cleaner.tokenize(
+                     for w in ciseau.tokenize(
                      question, normalize_ascii=False)]
 
-    context_sents = xml_cleaner.sent_tokenize(context, keep_whitespace=True,
+    context_sents = ciseau.sent_tokenize(context, keep_whitespace=True,
                                               normalize_ascii=False)
     # + 1 for end of sentence
     sent_lengths = [len(sent) + 1 for sent in context_sents]
@@ -270,7 +270,7 @@ def preprocess(datadir, outdir, glove_path, num_augmented):
     print("Finished...")
 
     print("Building word embedding matrix...", flush=True)
-    vocab.construct_embedding_matrix()
+    vocab.construct_embedding_matrix(glove_path)
     print("Finished...", flush=True)
 
     # Create training featurizations
