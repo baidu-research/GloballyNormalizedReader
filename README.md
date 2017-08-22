@@ -4,13 +4,13 @@ This repository contains the code used in the following paper:
 
 Jonathan Raiman and John Miller. Globally Normalized Reader. Empirical Methods in Natural Language Processing (EMNLP), 2017.
 
-If you use the dataset/code in your research, please cite the above paper.
+If you use the dataset/code in your research, please cite the above paper:
 
     @inproceedings{raiman2015gnr,
-        author = {J. Raiman and J. Miller},
-        booktitle = {Empirical Methods in Natural Language Processing (EMNLP)},
-        title = {Globally Normalized Reader},
-        year = {2017},
+        author={Raiman, Jonathan and Miller, John},
+        booktitle={Empirical Methods in Natural Language Processing (EMNLP)},
+        title={Globally Normalized Reader},
+        year={2017},
     }
 
 Note: This repository is a reimplementation of the original used for the above paper. The original used a batch size of 32 and synchronous-SGD across multiple GPUs. However, this code currently only runs on a single GPU and will split a batch that runs out of memory into several smaller batches. For this reason, the code does not exactly reproduce the results in that paper (but it should be <2% off). Work is underway to rectify this issue.
