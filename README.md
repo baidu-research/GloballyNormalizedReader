@@ -2,7 +2,7 @@
 
 This repository contains the code used in the following paper:
 
-Jonathan Raiman and John Miller. Globally Normalized Reader. Empirical Methods in Natural Language Processing (EMNLP), 2017.
+[Jonathan Raiman and John Miller. Globally Normalized Reader. Empirical Methods in Natural Language Processing (EMNLP), 2017.](https://www.aclweb.org/anthology/D17-1112)
 
 If you use the dataset/code in your research, please cite the above paper:
 
