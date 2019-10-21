@@ -17,5 +17,5 @@ six==1.10.0
 smart-open==1.5.3
 tensorflow-gpu==1.2.1
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 ciseau==1.0.0
