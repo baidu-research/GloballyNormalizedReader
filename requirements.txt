@@ -9,7 +9,7 @@ gensim==2.3.0
 html5lib==0.9999999
 idna==2.6
 Markdown==2.6.8
-numpy==1.13.1
+numpy==1.22.0
 protobuf==3.3.0
 requests==2.18.4
 scipy==0.19.1
