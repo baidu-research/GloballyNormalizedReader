@@ -10,7 +10,7 @@ html5lib==0.9999999
 idna==2.6
 Markdown==2.6.8
 numpy==1.13.1
-protobuf==3.3.0
+protobuf==3.18.3
 requests==2.18.4
 scipy==0.19.1
 six==1.10.0
